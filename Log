@@ -1,0 +1,75 @@
+2021-05-15 13:24:02,740 3968 INFO DIMADERA odoo.addons.base.models.ir_cron: Starting job `Base Action Rule: check and execute`. 
+2021-05-15 13:24:02,803 3968 INFO DIMADERA odoo.addons.base_automation.models.base_automation: Starting time-based automated action `Ejecuta el Planificador`. 
+2021-05-15 13:24:02,834 3968 INFO DIMADERA odoo.addons.base_automation.models.base_automation: Time-based automated action `Ejecuta el Planificador` done. 
+2021-05-15 13:24:02,850 3968 INFO DIMADERA odoo.addons.base.models.ir_cron: Job `Base Action Rule: check and execute` done. 
+2021-05-15 13:24:10,321 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:24:10] "POST /longpolling/im_status HTTP/1.1" 200 - 5 0.000 0.047
+2021-05-15 13:24:12,592 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:24:12] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.016 50.028
+2021-05-15 13:25:01,341 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:25:01] "POST /longpolling/im_status HTTP/1.1" 200 - 5 0.016 0.047
+2021-05-15 13:25:02,681 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:25:02] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.016 50.042
+2021-05-15 13:25:03,866 3968 INFO DIMADERA odoo.addons.base.models.ir_cron: Starting job `Base Action Rule: check and execute`. 
+2021-05-15 13:25:03,960 3968 INFO DIMADERA odoo.addons.base_automation.models.base_automation: Starting time-based automated action `Ejecuta el Planificador`. 
+2021-05-15 13:25:04,022 3968 INFO DIMADERA odoo.addons.base_automation.models.base_automation: Time-based automated action `Ejecuta el Planificador` done. 
+2021-05-15 13:25:04,038 3968 INFO DIMADERA odoo.addons.base.models.ir_cron: Job `Base Action Rule: check and execute` done. 
+2021-05-15 13:25:52,349 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:25:52] "POST /longpolling/im_status HTTP/1.1" 200 - 5 0.000 0.078
+2021-05-15 13:25:52,770 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:25:52] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.031 50.027
+2021-05-15 13:26:05,048 3968 INFO DataBase odoo.addons.base.models.ir_cron: Starting job `Jobs Garbage Collector`. 
+2021-05-15 13:26:05,111 3968 INFO DataBase odoo.addons.base.models.ir_cron: Job `Jobs Garbage Collector` done. 
+2021-05-15 13:26:05,126 3968 INFO DIMADERA odoo.addons.base.models.ir_cron: Starting job `Base Action Rule: check and execute`. 
+2021-05-15 13:26:05,205 3968 INFO DIMADERA odoo.addons.base_automation.models.base_automation: Starting time-based automated action `Ejecuta el Planificador`. 
+2021-05-15 13:26:05,251 3968 INFO DIMADERA odoo.addons.base_automation.models.base_automation: Time-based automated action `Ejecuta el Planificador` done. 
+2021-05-15 13:26:05,251 3968 INFO DIMADERA odoo.addons.base.models.ir_cron: Job `Base Action Rule: check and execute` done. 
+2021-05-15 13:26:42,864 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:26:42] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.031 50.016
+2021-05-15 13:26:43,338 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:26:43] "POST /longpolling/im_status HTTP/1.1" 200 - 5 0.016 0.047
+2021-05-15 13:27:06,268 3968 INFO DIMADERA odoo.addons.base.models.ir_cron: Starting job `Base Action Rule: check and execute`. 
+2021-05-15 13:27:06,330 3968 INFO DIMADERA odoo.addons.base_automation.models.base_automation: Starting time-based automated action `Ejecuta el Planificador`. 
+2021-05-15 13:27:06,393 3968 INFO DIMADERA odoo.addons.base_automation.models.base_automation: Time-based automated action `Ejecuta el Planificador` done. 
+2021-05-15 13:27:06,408 3968 INFO DIMADERA odoo.addons.base.models.ir_cron: Job `Base Action Rule: check and execute` done. 
+2021-05-15 13:27:13,855 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:13] "POST /web/dataset/call_kw/mrp.production/onchange HTTP/1.1" 200 - 23 0.047 0.281
+2021-05-15 13:27:15,216 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:15] "POST /web/dataset/call_kw/product.product/name_search HTTP/1.1" 200 - 5 0.078 0.063
+2021-05-15 13:27:17,900 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:17] "POST /web/dataset/call_kw/product.product/name_search HTTP/1.1" 200 - 18 0.125 0.078
+2021-05-15 13:27:18,408 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:18] "POST /web/dataset/call_kw/product.product/name_search HTTP/1.1" 200 - 21 0.094 0.141
+2021-05-15 13:27:19,034 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:19] "POST /web/dataset/call_kw/product.product/name_search HTTP/1.1" 200 - 21 0.078 0.141
+2021-05-15 13:27:22,914 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:22] "POST /web/dataset/call_kw/mrp.production/onchange HTTP/1.1" 200 - 258 1.063 1.906
+2021-05-15 13:27:25,354 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:25] "POST /web/dataset/call_kw/mrp.production/create HTTP/1.1" 200 - 182 0.609 0.766
+2021-05-15 13:27:25,698 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:25] "POST /web/dataset/call_kw/mrp.production/read HTTP/1.1" 200 - 50 0.156 0.156
+2021-05-15 13:27:25,870 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:25] "POST /web/dataset/call_kw/mail.followers/read HTTP/1.1" 200 - 3 0.016 0.047
+2021-05-15 13:27:26,104 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:26] "POST /web/dataset/call_kw/mail.message/read HTTP/1.1" 200 - 5 0.094 0.141
+2021-05-15 13:27:26,120 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:26] "POST /web/dataset/call_kw/mrp.workorder/read HTTP/1.1" 200 - 12 0.094 0.187
+2021-05-15 13:27:26,354 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:26] "POST /web/dataset/call_kw/stock.move/read HTTP/1.1" 200 - 46 0.266 0.328
+2021-05-15 13:27:28,785 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:28] "POST /web/dataset/call_button HTTP/1.1" 200 - 380 0.828 1.500
+2021-05-15 13:27:29,175 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:29] "POST /web/dataset/call_kw/mrp.production/read HTTP/1.1" 200 - 52 0.094 0.266
+2021-05-15 13:27:29,566 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:29] "POST /web/dataset/call_kw/mrp.workorder/read HTTP/1.1" 200 - 12 0.141 0.188
+2021-05-15 13:27:29,644 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:29] "POST /web/dataset/call_kw/mail.followers/read HTTP/1.1" 200 - 3 0.047 0.297
+2021-05-15 13:27:29,644 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:29] "POST /web/dataset/call_kw/mail.message/read HTTP/1.1" 200 - 5 0.094 0.219
+2021-05-15 13:27:30,550 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:30] "POST /web/dataset/call_kw/stock.move/read HTTP/1.1" 200 - 57 0.266 1.062
+2021-05-15 13:27:30,769 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:30] "POST /web/dataset/call_kw/mrp.workcenter.productivity/search_read HTTP/1.1" 200 - 2 0.016 0.016
+2021-05-15 13:27:30,816 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:30] "POST /web/dataset/call_kw/mrp.workcenter.productivity/search_read HTTP/1.1" 200 - 2 0.000 0.047
+2021-05-15 13:27:30,832 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:30] "POST /web/dataset/call_kw/mrp.workcenter.productivity/search_read HTTP/1.1" 200 - 2 0.016 0.062
+2021-05-15 13:27:30,847 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:30] "POST /web/dataset/call_kw/mrp.workcenter.productivity/search_read HTTP/1.1" 200 - 2 0.031 0.031
+2021-05-15 13:27:30,847 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:30] "POST /web/dataset/call_kw/mrp.workcenter.productivity/search_read HTTP/1.1" 200 - 2 0.000 0.062
+2021-05-15 13:27:30,847 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:30] "POST /web/dataset/call_kw/mrp.workcenter.productivity/search_read HTTP/1.1" 200 - 2 0.000 0.047
+2021-05-15 13:27:30,925 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:30] "POST /web/dataset/call_kw/mrp.production/read HTTP/1.1" 200 - 3 0.016 0.031
+2021-05-15 13:27:31,097 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/call_kw/ir.attachment/search_read HTTP/1.1" 200 - 2 0.016 0.125
+2021-05-15 13:27:31,097 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /mail/get_suggested_recipients HTTP/1.1" 200 - 7 0.062 0.141
+2021-05-15 13:27:31,113 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /mail/read_followers HTTP/1.1" 200 - 9 0.063 0.156
+2021-05-15 13:27:31,113 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/call_kw/mrp.production/read HTTP/1.1" 200 - 3 0.031 0.109
+2021-05-15 13:27:31,160 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/call_kw/mail.message/message_fetch HTTP/1.1" 200 - 22 0.187 0.094
+2021-05-15 13:27:31,222 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/call_kw/ir.attachment/search_read HTTP/1.1" 200 - 2 0.016 0.062
+2021-05-15 13:27:31,269 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/call_kw/mrp.production/read HTTP/1.1" 200 - 3 0.000 0.109
+2021-05-15 13:27:31,269 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /mail/get_suggested_recipients HTTP/1.1" 200 - 7 0.031 0.109
+2021-05-15 13:27:31,285 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /mail/read_followers HTTP/1.1" 200 - 9 0.094 0.047
+2021-05-15 13:27:31,379 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /mail/read_followers HTTP/1.1" 200 - 9 0.063 0.031
+2021-05-15 13:27:31,394 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /mail/get_suggested_recipients HTTP/1.1" 200 - 7 0.031 0.078
+2021-05-15 13:27:31,441 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/call_kw/mrp.production/read HTTP/1.1" 200 - 3 0.016 0.078
+2021-05-15 13:27:31,441 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/call_kw/ir.attachment/search_read HTTP/1.1" 200 - 2 0.016 0.094
+2021-05-15 13:27:31,519 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /mail/read_followers HTTP/1.1" 200 - 9 0.047 0.078
+2021-05-15 13:27:31,535 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /mail/get_suggested_recipients HTTP/1.1" 200 - 7 0.047 0.062
+2021-05-15 13:27:31,535 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/call_kw/ir.attachment/search_read HTTP/1.1" 200 - 2 0.016 0.078
+2021-05-15 13:27:31,550 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/call_kw/mail.activity/activity_format HTTP/1.1" 200 - 1 0.000 0.047
+2021-05-15 13:27:31,566 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/call_kw/mail.activity/activity_format HTTP/1.1" 200 - 1 0.016 0.016
+2021-05-15 13:27:31,582 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/call_kw/mail.activity/activity_format HTTP/1.1" 200 - 1 0.000 0.031
+2021-05-15 13:27:31,613 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/call_kw/mail.activity/activity_format HTTP/1.1" 200 - 1 0.000 0.031
+2021-05-15 13:27:31,628 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/call_kw/mail.message/mark_all_as_read HTTP/1.1" 200 - 5 0.016 0.062
+2021-05-15 13:27:31,988 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:31] "POST /web/dataset/search_read HTTP/1.1" 200 - 38 0.172 0.234
+2021-05-15 13:27:32,971 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:32] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.000 50.060
+2021-05-15 13:27:33,439 3968 INFO DataBase werkzeug: 192.168.1.142 - - [15/May/2021 13:27:33] "POST /longpolling/im_status HTTP/1.1" 200 - 5 0.047 0.000

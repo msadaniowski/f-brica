@@ -19,12 +19,12 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'account' ,'purchase', 'product',  'sale', ],
+    'depends': ['account' ,'purchase', 'product',  'sale', ],
 
     # always loaded
     'data': [
 
-        'views/views_account_invoice.xml',
+        # 'views/views_account_invoice.xml',
         
         
     ],

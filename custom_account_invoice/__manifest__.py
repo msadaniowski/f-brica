@@ -19,11 +19,11 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'account','purchase','product','l10n_ar','l10n_latam_invoice_document','sale'],
+    'depends': ['base', 'account' ,'purchase', 'product',  'sale', ],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+
         'views/views_account_invoice.xml',
         
         

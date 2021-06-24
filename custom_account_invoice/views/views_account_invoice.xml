@@ -6,7 +6,7 @@
             <field name="inherit_id" ref="account_invoice_line_report.view_invoice_report_tree_info"/>
             <field name="arch" type="xml">
                 <field name="partner_id" position="after">
-                    <field name="main_seller_ids"/>
+                    <field name="main_sellers_id"/>
                 </field>
             </field>
         </record>

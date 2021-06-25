@@ -6,6 +6,9 @@ from odoo import models, fields
 class AccountInherit(models.Model):
     _inherit = 'account.invoice.report'
 
-    # main_seller_id = fields.Many2one(related='test.product_id.main_seller_id', readonly=True, string='Proveedor')
-    main_seller_ids = fields.Many2one('res.partner')
-    main_sellers_id = fields.Char(related='main_seller_ids.product_id.main_seller_id', string='Proveedor')
+    main_sellers_id = fields.Many2one(
+        comodel_name="res.partner",
+        string="Proveedor",
+        readonly=True,
+        store=True,
+        related="main_seller_ids.product_id.main_seller_id",)

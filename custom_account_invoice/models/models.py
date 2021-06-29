@@ -11,4 +11,13 @@ class AccountInherit(models.Model):
         string="Proveedor",
         readonly=True,
         store=True,
-        related="main_seller_ids.product_id.main_seller_id",)
+        related="product_id.main_seller_id",)
+
+    def _select(self):
+        return super(AccountInvoiceReport, self)._select() + ", supp.name as main_sellers_id"
+
+    def _from(self):
+        return super(AccountInvoiceReport, self)._from() + " LEFT JOIN product_main_seller_id supp ON pt.id = supp.product_tmpl_id "
+
+    def _group_by(self):
+        return super(AccountInvoiceReport, self)._group_by() + ",supp.name "

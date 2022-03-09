@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<t t-name="mrp.label_production_view_pdf">
+    <t t-call="web.basic_layout">
+        <div class="page">
+            <t t-set="uom_categ_unit" t-value="env.ref('uom.product_uom_categ_unit')"/>
+            <t t-foreach="docs" t-as="production">
+                <t t-foreach="production.move_finished_ids" t-as="move">
+                    <t t-if="production.state == 'done'">
+                        <t t-set="move_lines" t-value="move.move_line_ids.filtered(lambda x: x.state == 'done' and x.qty_done)"/>
+                    </t>
+                    <t t-else="">
+                        <t t-set="move_lines" t-value="move.move_line_ids.filtered(lambda x: x.state != 'done' and x.product_qty)"/>
+                    </t>
+                    <t t-foreach="move_lines" t-as="move_line">
+                        <t t-if="move_line.product_uom_id.category_id == uom_categ_unit">
+                            <t t-set="qty" t-value="int(move_line.qty_done)"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="qty" t-value="3"/>
+                        </t>
+                        <t t-foreach="range(qty)" t-as="item">
+                            <t t-translation="off">
+                                <div style="display: inline-table; height: 10rem; width: 32%;">
+                                    <table class="table table-bordered" style="border: 2px solid black;" t-if="production.move_finished_ids">
+                                        <tr>
+                                            <th class="table-active text-left" style="height:4rem;">
+                                                <span>Producto:</span>
+                                                <span t-esc="move.product_id.display_name"/>
+                                                <br/>
+                                                <span>Cantidad:</span>
+                                                <t t-if="move_line.product_uom_id.category_id == uom_categ_unit">
+                                                    <span t-field="move.product_qty"/>
+                                                    <span t-field="move_line.product_uom_id" groups="uom.group_uom"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-esc="move_line.product_uom_qty" t-if="move_line.state !='done'"/>
+                                                    <span t-esc="move_line.qty_done" t-if="move_line.state =='done'"/>
+                                                    <span t-field="move_line.product_uom_id" groups="uom.group_uom"/>
+                                                </t>
+                                            </th>
+                                        </tr>
+                                        <t t-if="move_line.product_id.tracking != 'none'">
+                                            <tr>
+                                                <td class="text-center align-middle">
+                                                    <t t-if="move_line.lot_name or move_line.lot_id">
+                                                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', move_line.lot_name or move_line.lot_id.name, 600, 150)" style="width:100%;height:4rem" alt="Barcode"/>
+                                                        <span t-esc="move_line.lot_name or move_line.lot_id.name"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span class="text-muted">No barcode available</span>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                        <t t-if="move_line.product_id.tracking == 'none'">
+                                            <tr>
+                                                <td class="text-center align-middle" style="height: 6rem;">
+                                                    <t t-if="move_line.product_id.barcode">
+                                                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', move_line.product_id.barcode, 600, 150)" style="width:100%;height:4rem" alt="Barcode"/>
+                                                            <span t-esc="move_line.product_id.barcode"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span class="text-muted">No barcode available</span>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </table>
+                                </div>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </div>
+    </t>
+</t>

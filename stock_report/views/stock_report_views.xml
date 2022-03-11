@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_packinglist_out">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <t t-set="uom_categ_unit" t-value="env.ref('uom.product_uom_categ_unit')"/>
+                    <t t-foreach="docs" t-as="picking">
+                        <t t-foreach="picking.move_lines" t-as="move">
+                            <t t-foreach="move.move_line_ids" t-as="move_line">
+                                <t t-if="move_line.product_uom_id.category_id == uom_categ_unit">
+                                    <t t-set="qty" t-value="int(move_line.qty_done)"/>
+                                </t>
+                                <t t-else="">
+                                    <t t-set="qty" t-value="1"/>
+                                </t>
+                                <t t-foreach="range(qty)" t-as="item">
+                                    <t t-translation="off">
+                                         <t t-if="item % 2 != 1">
+                                          <div style="display: inline-table; height: 15rem; width: 100%;">
+                                           <table class="table table-bordered" style="border: 2px solid black;">
+                                            <th class="table-active text-left" style="height:16rem;">
+                                               <table class="table table-bordered">
+                                                 <!--<td class="text-center align-middle" style="height: 3rem;">-->
+                                                 <thead>
+                                                   <tr>
+                                                     <th><h2>Producto:</h2></th>
+                                                     <th> <h4>
+                                                        <span t-field="move_line.product_id.display_name"/>
+                                                      </h4>
+                                                      </th>
+                                                   </tr>
+                                                   <tr>
+                                                     <th><h2>Cantidad:</h2></th>
+                                                     <th> <h4>
+                                                        <string>2 / </string>
+                                                        <span t-field="move_line.qty_done"/>
+                                                      </h4>
+                                                      </th>
+                                                   </tr>
+                                                   <tr>
+                                                     <th><h2>Viaje:</h2></th>
+                                                     <th> <h4>
+<!--                                                        <span t-field="picking.client_order_nro"/>-->
+                                                      </h4>
+                                                      </th>
+                                                   </tr>
+                                                   <tr>
+                                                     <th><h2>Cliente:</h2></th>
+                                                     <th> <h4>
+<!--                                                        <span t-field="picking.partner_id"/>-->
+                                                      </h4>
+                                                      </th>
+                                                   </tr>
+                                                 </thead>
+                                               </table>
+                                            </th>
+                                                <t t-if="move_line.product_id.tracking == 'none'">
+                                                    <tr>
+                                                        <td class="text-center align-middle" style="height: 2rem;">
+                                                            <t t-if="move_line.product_id.barcode">
+                                                                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', move_line.product_id.barcode, 600, 150)" style="width:40%;height:2rem" alt="Barcode"/><br/>
+                                                                    <span t-esc="move_line.product_id.barcode"/><br/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', picking.name, 600, 150)" style="width:40%;height:2rem" alt="Barcode"/>
+                                                                <br/>
+                                                                <string>  Órden Nro: </string>
+                                                                <span t-field="picking.origin"/>
+                                                            </t>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </table>
+                                        </div></t>
+                                    </t>
+                                </t>
+                            </t>
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

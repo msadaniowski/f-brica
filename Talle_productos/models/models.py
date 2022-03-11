@@ -19,7 +19,7 @@ class mrpProductiones(models.Model):
         for record in self:
             _logger.info('Record %s' % record.name)
 
-            lustre = record.product_id.product_template_attribute_value_ids.filtered(
+            Talle = record.product_id.product_template_attribute_value_ids.filtered(
                 lambda x: x.attribute_id.name == 'Talle')
             _logger.info('Talle %s' % Talle)
 

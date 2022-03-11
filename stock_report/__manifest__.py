@@ -18,11 +18,14 @@
     'version': '14.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['stock'],
+    'depends': ['product', 'stock',],
 
     # always loaded
     'data': [
         'views/stock_report.xml',
         'views/stock_report_views.xml',
+        'views/product_template_inherited.xml',
     ],
 }
+
+

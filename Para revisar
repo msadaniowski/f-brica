@@ -18,8 +18,7 @@
                                           <div style="display: inline-table; height: 15rem; width: 100%;">
                                            <table class="table table-bordered" style="border: 2px solid black;">
                                             <th class="table-active text-left" style="height:16rem;">
-                                               <table class="table table-bordered">
-                                                 <!--<td class="text-center align-middle" style="height: 3rem;">-->
+                                               <table class="table table-bordered">                                                
                                                  <thead>
                                                    <tr>
                                                      <th><h2>Producto:</h2></th>

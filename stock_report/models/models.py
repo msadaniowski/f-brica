@@ -7,5 +7,5 @@ from odoo import fields, models, api
 class ProductLabel(models.Model):
     _inherit = 'product.template'
     
-    etiquetas = fields.Char(string='Etiquetas', store='true')
+    etiquetas = fields.Float(string='Etiquetas', store='true')
 

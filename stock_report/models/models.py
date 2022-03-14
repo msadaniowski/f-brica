@@ -8,4 +8,4 @@ class ProductLabel(models.Model):
     _inherit = 'product.template'
     
     etiquetas = fields.Float(string='Etiquetas', store='true')
-
+    qty_of = fields.Char(string='Tantas de...', store='true')

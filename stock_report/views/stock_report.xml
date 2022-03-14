@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <record id="report_stock_picking_list_out" model="ir.actions.report">
-            <field name="name">Report Picking</field>
+            <field name="name">Etiqueta de Embalaje</field>
             <field name="model">stock.picking</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">stock_report.report_packinglist_out</field>

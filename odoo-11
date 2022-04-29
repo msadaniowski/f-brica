@@ -1,0 +1,33 @@
+# Copyright YEAR(S), AUTHOR(S)
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
+
+
+from odoo import fields, models, api
+
+class mrpProductiones(models.Model):
+    _inherit = 'mrp.production'
+
+    lustre = fields.Char(string='Lustre', compute='compute_variant', store='true')
+    tapizado = fields.Char(string='Tapizado', compute='compute_variant', store='true')
+
+    @api.depends('product_id')
+    def compute_variant(self):
+        for record in self:
+
+
+            lustre = record.product_id.product_attribute_ids.filtered(
+                lambda x: x.attribute_id.name == 'Lustre')
+
+
+            if lustre:
+                record.lustre = lustre.name
+            else:
+                record.lustre = False
+            tapizado = record.product_id.product_attribute_ids.filtered(
+                lambda x: x.attribute_id.name == 'Tapizado')
+
+
+            if tapizado:
+                record.tapizado = tapizado.name
+            else:
+                record.tapizado = False

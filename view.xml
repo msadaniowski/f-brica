@@ -1,15 +1,118 @@
-<odoo>
-    <data>
-        <record id="view_production_form_inherit" model="ir.ui.view">
-            <field name="name">view.production.form.inherit</field>
-            <field name="model">mrp.production</field>
-            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
-            <field name="arch" type="html">
-                <xpath expr="//field[@name='product_id']" position="after">
-                    <field name="color_id" optional="show"/>
-                    <field name="material_id" optional="show"/>
-                </xpath>
-            </field>
-        </record>
-    </data>
-</odoo>
+<?xml version="1.0"?>
+<t t-name="mrp.label_production_view_pdf">
+    <t t-call="web.basic_layout">
+        <div class="page">
+            <t t-set="uom_categ_unit" t-value="env.ref('uom.product_uom_categ_unit')"/>
+            <t t-foreach="docs" t-as="production">
+                <t t-foreach="production.move_finished_ids" t-as="move">
+                    <t t-if="production.state == 'done'">
+                        <t t-set="move_lines"
+                           t-value="move.move_line_ids.filtered(lambda x: x.state == 'done' and x.qty_done)"/>
+                    </t>
+                    <t t-else="">
+                        <t t-set="move_lines"
+                           t-value="move.move_line_ids.filtered(lambda x: x.state != 'done' and x.product_qty)"/>
+                    </t>
+                    <t t-foreach="move_lines" t-as="move_line">
+                        <t t-if="move_line.product_uom_id.category_id == uom_categ_unit">
+                            <t t-set="qty" t-value="int(move_line.qty_done)"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="qty" t-value="1"/>
+                        </t>
+                        <t t-foreach="range(int(2 * qty * move_line.product_id.etiquetas))" t-as="item">
+                            <t t-translation="off">
+
+      <div class="table-responsive">
+  <table class="table" style="border: 4px solid black;">
+
+
+
+                                <!--<div style="display: inline-table; height: 300px; width: 100%;">-->
+                                <!--<table class="table table-bordered" style="border: 4px solid black;">-->
+                                <!--<th class="table-active text-left" style="height:39.5rem;">-->
+                                <th class="table" style="height:39.5rem;">
+                                <table style="height: 150px; width: 100%; border-collapse: collapse; border-style: solid;"
+                                       border="4" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                        <tr style="height: 57px;">
+                                            <td style="font-family: Verdana; font-size: small; font-weight: bold; font-variant: small-caps; width: 125.88px; text-align: left; height: 57px;">
+                                                <h1>Producto:</h1>
+                                            </td>
+                                            <td style="width: 377.176px; height: 57px;">
+                                                <h2>
+                                                    <span t-field="move.product_id.display_name"/>
+                                                </h2>
+                                            </td>
+                                        </tr>
+                                        <tr style="height: 36px;">
+                                            <td style="font-family: Verdana; font-size: small; font-weight: bold; font-variant: small-caps; height: 36px; width: 125.88px; text-align: left;">
+                                                <h1>Cantidad:</h1>
+                                            </td>
+                                            <td style="height: 36px; width: 500px;">
+                                                <h2>
+                                                   <span t-field="move_line.product_id.qty_of"/>
+                                                                        <string> / </string>
+                                                                        <span t-field="move_line.qty_done"/>
+                                                </h2>
+                                            </td>
+                                        </tr>
+                                        <tr style="height: 19px;">
+                                            <td style="font-family: Verdana; font-size: small; font-weight: bold; font-variant: small-caps; width: 125.88px; height: 19px; text-align: left;">
+                                                <h1>Viaje:</h1>
+                                            </td>
+                                            <td style="width: 377.176px; height: 19px;">
+                                                <h2>
+                                                    <span t-field="production.client_order_nro"/>
+                                                </h2>
+                                            </td>
+                                        </tr>
+                                        <tr style="height: 57px;">
+                                            <td style="font-family: Verdana; font-size: small; font-weight: bold; font-variant: small-caps; width: 125.88px; text-align: left; height: 57px;">
+                                                <h1>Cliente:</h1>
+                                            </td>
+                                            <td style="width: 377.176px; height: 57px;">
+                                                <h2>
+                                                    <span t-field="production.client_fullname"/>
+                                                </h2>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table style="border-collapse: collapse; width: 95.7103%; height: 150px;" border="4">
+                                    <tbody>
+                                        <tr style="height: 40px;">
+
+
+                                            <td style="width: 50%; height: 40px; text-align: center;">
+                                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', move_line.product_id.barcode, 600, 100)"
+                                                     style="width:300px;height:50px"/>
+                                            </td>
+
+
+                                            <!--<td style="width: 50%; height: 40px; text-align: center;"><img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', move_line.product_id.barcode, 400, 70)"  alt="Barcode"/></td>-->
+                                            <td style="width: 50%; height: 40px; text-align: center;">
+                                                <img t-att-src="'/stock_report/static/src/img/image_name.png'"/>
+                                            </td>
+                                        </tr>
+                                        <tr style="height: 20px;">
+                                            <td style="width: 50%; height: 5px; text-align: center;">
+                                                <span t-field="move_line.product_id.barcode"/>
+                                            </td>
+                                            <td style="width: 50%; height: 5px;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                </th>
+
+                                </table>
+                                </div>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </div>
+    </t>
+</t>

@@ -1,80 +1,46 @@
-<?xml version="1.0"?>
-<t t-name="stock.label_transfer_template_view_pdf">
-            <t t-call="web.basic_layout">
-                <div class="page">
-                    <t t-set="uom_categ_unit" t-value="env.ref('uom.product_uom_categ_unit')"/>
-                    <t t-foreach="docs" t-as="picking">
-                        <t t-foreach="picking.move_lines" t-as="move">
-                            <t t-foreach="move.move_line_ids" t-as="move_line">
-                                <t t-if="move_line.product_uom_id.category_id == uom_categ_unit">
-                                    <t t-set="qty" t-value="int(move_line.qty_done)"/>
-                                </t>
-                                <t t-else="">
-                                    <t t-set="qty" t-value="1"/>
-                                </t>
-                                <t t-foreach="range(qty)" t-as="item">
-                                    <t t-translation="off">
-                                         <t t-if="item % 2 != 1">
-                                          <div style="display: inline-table; height: 15rem; width: 100%;">
-                                           <table class="table table-bordered" style="border: 2px solid black;">
-                                            <th class="table-active text-left" style="height:16rem;">
-                                               <table class="table table-bordered">                                                
-                                                 <thead>
-                                                   <tr>
-                                                     <th><h2>Producto:</h2></th>
-                                                     <th> <h4>
-                                                        <span t-field="move_line.product_id.display_name"/>
-                                                      </h4>
-                                                      </th>
-                                                   </tr>
-                                                   <tr>
-                                                     <th><h2>Cantidad:</h2></th>
-                                                     <th> <h4>
-                                                        <string>2 / </string>
-                                                        <span t-field="move_line.qty_done"/>
-                                                      </h4>
-                                                      </th>
-                                                   </tr>
-                                                   <tr>
-                                                     <th><h2>Viaje:</h2></th>
-                                                     <th> <h4>
-                                                        <span t-field="picking.client_order_nro"/>
-                                                      </h4>
-                                                      </th>
-                                                   </tr>
-                                                   <tr>
-                                                     <th><h2>Cliente:</h2></th>
-                                                     <th> <h4>
-                                                        <span t-field="picking.partner_id"/>
-                                                      </h4>
-                                                      </th>
-                                                   </tr>
-                                                 </thead>
-                                               </table>
-                                            </th>
-                                                <t t-if="move_line.product_id.tracking == 'none'">
-                                                    <tr>
-                                                        <td class="text-center align-middle" style="height: 2rem;">
-                                                            <t t-if="move_line.product_id.barcode">
-                                                                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', move_line.product_id.barcode, 600, 150)" style="width:40%;height:2rem" alt="Barcode"/><br/>
-                                                                    <span t-esc="move_line.product_id.barcode"/><br/>
-                                                            </t>
-                                                            <t t-else="">
-                                                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', picking.name, 600, 150)" style="width:40%;height:2rem" alt="Barcode"/>
-                                                                <br/>
-                                                                <string>  Órden Nro: </string>
-                                                                <span t-field="picking.origin"/>
-                                                            </t>
-                                                        </td>
-                                                    </tr>
-                                                </t>
-                                            </table>
-                                        </div></t>
-                                    </t>
-                                </t>
-                            </t>
-                        </t>
-                    </t>
-                </div>
-            </t>
-        </t>
+# -*- coding: utf-8 -*-
+
+# from odoo import _, models
+from odoo import _, api, fields, models
+
+
+class StockPicking(models.Model):
+    _name = 'stock.picking'
+    _inherit = ['stock.picking', 'barcodes.barcode_events_mixin']
+
+    product_barcode_scan = fields.Char(string='Barcode')
+
+    def on_barcode_scanned(self, barcode):
+        product = self.env['product.product'].search(
+            ['|', ('barcode', '=', barcode), ('default_code', '=', barcode)], limit=1)
+        if product:
+            moveLines = self.move_ids_without_package.filtered(
+                lambda r: r.product_id == product)
+
+            for line in moveLines:
+                line.quantity_done = line.move_line_ids.qty_done + 1
+                self.env.cr.commit()
+                return {'warning': {'title': _('Agregado con éxito'),
+                                    'message': _(' %s - %s/%s.') % (product.name,  line.quantity_done,  line.product_uom_qty)
+                                    },
+                        }
+
+            else:
+                return {'warning': {'title': _('Error'),
+                                    'message': _('Este producto %s con el codigo de barra %s no esta presente en esta entrega.') % (product.name, barcode)},
+                        }
+            return
+        else:
+            return {'warning': {'title': _('Error'),
+                                'message': _('Este codigo de barra %s no esta asociado a ningun producto.') % barcode},
+                    }
+
+    @api.onchange('product_barcode_scan')
+    def onchange_product_barcode_scan(self):
+        barcode = self.product_barcode_scan
+        if barcode:
+            self.product_barcode_scan = ''
+            return self.on_barcode_scanned(barcode)
+        else:
+            self.product_barcode_scan = ''
+            pass

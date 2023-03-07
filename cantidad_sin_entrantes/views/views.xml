@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+
+        <record id="view_stock_qty_inherited_tree" model="ir.ui.view">
+            <field name="name">view.stock.qty.inherited.tree</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="html">
+                <xpath expr="//field[@name='standard_price']" position="after">
+                    <field name="quantity_difference" string="Stock Actual"/>
+		    <field name="total_performance"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_stock_qty_performance_form" model="ir.ui.view">
+            <field name="name">view.stock.qty.performance.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="html">
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="performance"/>
+                </xpath>
+            </field>
+        </record>       
+
+    </data>
+</odoo>
